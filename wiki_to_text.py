@@ -1,8 +1,7 @@
 from dewiki_functions import *
 
-#wiki_xml_file = 'F:/simplewiki-20210401/simplewiki-20210401.xml'  # update this
-wiki_xml_file = 'G:/enwiki-20210401/enwiki-20210401.xml'  # update this
-json_save_dir = 'G:/wiki_plaintext/'
+wiki_xml_file = '/Users/carsonwu/Developer/Own/code/kg_chatbot/20260421/enwiki-latest-pages-articles.xml'
+json_save_dir = '/Users/carsonwu/Developer/Own/code/kg_chatbot/20260421/json/'
 
 if __name__ == '__main__':
     process_file_text(wiki_xml_file, json_save_dir)
