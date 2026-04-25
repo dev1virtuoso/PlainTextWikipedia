@@ -6,6 +6,7 @@ import re
 from html2text import html2text as htt
 import wikitextparser as wtp
 import unicodedata
+import sys
 
 def remove_accents(input_str):
     nfkd_form = unicodedata.normalize('NFKD', input_str)
@@ -42,11 +43,12 @@ def analyze_chunk(text):
         print(oops)
         return None
 
-
-def save_article(article, savedir):
+def save_article(article, savedir, current_count, total_count):
     doc = analyze_chunk(article)
     if doc:
-        print('SAVING:', doc['title'])
+        sys.stdout.write(f"\rPROGRESS: {current_count}/{total_count} | SAVING: {doc['title'][:30]}...          ")
+        sys.stdout.flush()
+        
         filename = doc['id'] + '.json'
         with open(savedir + filename, 'w', encoding='utf-8') as outfile:
             json.dump(doc, outfile, sort_keys=True, indent=1, ensure_ascii=False)
